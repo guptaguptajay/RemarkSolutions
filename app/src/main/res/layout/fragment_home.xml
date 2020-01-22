@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".MainArea.HomeFragment.HomeFrag">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="6dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/colorBackgroundWhite">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/special_offers"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/fragment_home_seeAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/see_all"
+                    android:drawableEnd="@drawable/ic_arrow_forward"
+                    android:drawablePadding="4dp"
+                    android:textSize="15sp"
+                    android:layout_alignParentEnd="true"/>
+
+
+
+            </RelativeLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/fragment_home_viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:clipToPadding="false"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/colorBackgroundWhite">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Streak"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar_streak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_marginTop="6dp"
+                android:progressTint="@color/colorAccent"
+                android:progress="50"
+                android:secondaryProgressTint="@color/colorSkyBlue"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="8dp"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar_share"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_marginTop="6dp"
+                android:progressTint="@color/colorGreen"
+                android:progress="70"
+                android:secondaryProgressTint="@color/colorSkyBlue"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ABC"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar_abc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_marginTop="6dp"
+                android:progressTint="@color/colorBlue"
+                android:progress="30"
+                android:secondaryProgressTint="@color/colorSkyBlue"
+                android:layout_marginBottom="4dp"/>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackgroundWhite"
+            android:padding="8dp"
+            android:layout_marginTop="3dp">
+
+            <ImageButton
+                android:id="@+id/fragment_home_taskButton"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/butt"
+                android:src="@drawable/ic_laugh"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/fragment_home_earnCoins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/earn_coins"
+                android:textSize="18sp"
+                android:padding="2dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/fragment_home_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fragment_home_earnCoins"
+                android:text="Share to the Friends.."
+                android:textSize="18sp"
+                android:textColor="#1c1b1b"
+                android:padding="5dp"
+                android:drawableStart="@drawable/ic_share_black"
+                android:drawablePadding="8dp"/>
+
+            <TextView
+                android:id="@+id/fragment_home_watch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fragment_home_share"
+                android:text="Watch Previous adds.."
+                android:textSize="18sp"
+                android:textColor="#1c1b1b"
+                android:padding="5dp"
+                android:drawableStart="@drawable/ic_video"
+                android:drawablePadding="8dp"/>
+
+            <TextView
+                android:id="@+id/fragment_home_moreTask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fragment_home_watch"
+                android:text="more.."
+                android:textSize="16sp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="2dp"/>
+
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

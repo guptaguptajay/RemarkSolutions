@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.remarksolutions.Login.LoginActivity;
+import com.example.remarksolutions.MainArea.HomeActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,9 +18,13 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth firebaseAuth= FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()!=null)
         {
-            firebaseAuth.signOut();
+            startActivity(new Intent(this, HomeActivity.class));
+        }
+        else
+        {
+            startActivity(new Intent(this, LoginActivity.class));
+
         }
 
-        startActivity(new Intent(this, LoginActivity.class));
     }
 }
