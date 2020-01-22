@@ -16,6 +16,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.example.remarksolutions.R;
+
 import com.example.remarksolutions.MainActivity;
 import com.example.remarksolutions.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,8 +64,12 @@ public class HomeFrag extends Fragment {
             @Override
             public void onClick(View view) {
 
+
+                Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_SHORT).show();
+
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(view.getContext(), MainActivity.class));
+
 
             }
         });

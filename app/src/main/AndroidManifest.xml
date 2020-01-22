@@ -11,8 +11,11 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainArea.HomeFragment.HomeFrag"></activity>
 
+
+
         <activity android:name=".Login.CouponRegisterActivity"></activity>
         <activity android:name=".Login.ShopRegisterActivity" />
+
         <activity android:name=".MainArea.HomeActivity" />
         <activity android:name=".Login.LoginActivity" />
         <activity android:name=".MainActivity">
