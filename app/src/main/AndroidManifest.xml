@@ -9,9 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainArea.HomeFragment.HomeFrag"></activity>
-
-        <activity android:name=".Login.CouponRegisterActivity"></activity>
+        <activity android:name=".MainArea.ProfileFragment.CouponsActivity"></activity>
+        <activity android:name=".MainArea.HomeFragment.AdsPlayerActivity" />
+        <activity android:name=".Login.RegisterRewardActivity" />
+        <activity android:name=".MainArea.ExploreFragment.ShopLayout.ShopLayoutActivity" />
+        <activity android:name=".MainArea.HomeFragment.HomeFrag" />
+        <activity android:name=".Login.CouponRegisterActivity" />
         <activity android:name=".Login.ShopRegisterActivity" />
         <activity android:name=".MainArea.HomeActivity" />
         <activity android:name=".Login.LoginActivity" />

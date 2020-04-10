@@ -6,9 +6,19 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 
 import com.example.remarksolutions.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
+
+import javax.annotation.Nullable;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -18,9 +28,30 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        final TextView textView = findViewById(R.id.tvHomeCoins);
+        int coins;
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder().setTimestampsInSnapshotsEnabled(true).build();
+        firebaseFirestore.setFirestoreSettings(settings);
+        firebaseFirestore.collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException e) {
+
+                if (e != null) {
+                    Log.w(TAG, "Listen failed.", e);
+                    return;
+                }
+
+                if (snapshot != null && snapshot.exists()) {
+                    textView.setText(snapshot.get("Coins").toString());
+                } else {
+                    Log.d(TAG, "Current data: null");
+                }
+            }
+        });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.home_bottomNavigation);
-        NavController navController = Navigation.findNavController(this, R.id.home_fragment);
+        NavController navController = Navigation.findNavController(this, R.id.host_fragment);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
     }

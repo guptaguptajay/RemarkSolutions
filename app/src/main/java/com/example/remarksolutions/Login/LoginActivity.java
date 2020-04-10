@@ -116,6 +116,9 @@ public class LoginActivity extends AppCompatActivity {
                     obj.put("Coins",""+0);
                     obj.put("C_Streak",""+0);
                     obj.put("H_Streak",""+0);
+                    obj.put("Shares",""+0);
+                    obj.put("L_Streak",""+0);
+                    obj.put("L_Shares",""+0);
 
                     number = "+91"+phone.getText().toString();
                     sendVeri();
