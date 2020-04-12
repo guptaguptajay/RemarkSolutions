@@ -71,8 +71,8 @@ public class AdsPlayerActivity extends AppCompatActivity {
                                         Log.e("wo complte","hao");
                                     }
                                 });
-                                int nCoins = Integer.parseInt(snapshot.get("Coins").toString())+10;
-                                transaction.update(documentReference, "Coins", nCoins);
+                                int nCoins = Integer.parseInt(snapshot.get("coins").toString())+10;
+                                transaction.update(documentReference, "coins", nCoins);
 
                                 // Success
                                 return null;

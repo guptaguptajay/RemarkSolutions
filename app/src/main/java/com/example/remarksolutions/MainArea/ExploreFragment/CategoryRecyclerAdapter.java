@@ -61,7 +61,9 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
 
                 for (QueryDocumentSnapshot documentSnapshot:queryDocumentSnapshots)
                 {
-                    shopArrayList.add(new ShopModel(documentSnapshot));
+                    ShopModel shopModel =documentSnapshot.toObject(ShopModel.class);
+                    shopModel.setShopID(documentSnapshot.getId());
+                    shopArrayList.add(shopModel);
                     Log.e("Snap",documentSnapshot.getData().toString());
                 }
 

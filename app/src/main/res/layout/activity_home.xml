@@ -1,45 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/AppTheme1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     tools:context=".MainArea.HomeActivity">
+    <include
+        layout="@layout/toolbar"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimaryDark"
-        android:gravity="center_vertical|end"
-        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="25dp"
-            android:gravity="clip_horizontal|center">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="42dp"
-                android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="4dp"
-                app:srcCompat="@drawable/ic_coin" />
-
-            <TextView
-                android:id="@+id/tvHomeCoins"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="3dp"
-                android:layout_marginBottom="8dp"
-                android:layout_toEndOf="@+id/imageView2"
-                android:text="555"
-                android:textSize="24sp" />
-        </RelativeLayout>
-    </LinearLayout>
 
     <fragment
         android:id="@+id/host_fragment"
@@ -48,7 +20,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph" />
+        app:navGraph="@navigation/nav_graph"
+        />
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

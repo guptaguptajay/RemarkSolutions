@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.remarksolutions.MainActivity;
+import com.example.remarksolutions.Models.UserModel;
 import com.example.remarksolutions.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,13 +39,14 @@ import java.util.concurrent.TimeUnit;
 public class LoginActivity extends AppCompatActivity {
 
 
-    Map<String,String> obj=new HashMap<>();
     TextView resend, shopRegister,coupRegister;
     String number,id;
     FirebaseAuth mAuth;
     FirebaseFirestore firebaseFirestore;
     Spinner  locality;
+    UserModel userModel;
     Locality lc= new Locality();
+    String loca;
 
 
 
@@ -75,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         locality.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                obj.put("locality",lc.getA()[i]);
+                loca=lc.getA()[i];
             }
 
             @Override
@@ -111,14 +113,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-                    obj.put("Name",name.getText().toString());
-                    obj.put("Mobile",phone.getText().toString());
-                    obj.put("Coins",""+0);
-                    obj.put("C_Streak",""+0);
-                    obj.put("H_Streak",""+0);
-                    obj.put("Shares",""+0);
-                    obj.put("L_Streak",""+0);
-                    obj.put("L_Shares",""+0);
+
+                     userModel= new UserModel(name.getText().toString(),loca,0,Long.parseLong(phone.getText().toString()),Integer.parseInt(age.getText().toString()));
 
                     number = "+91"+phone.getText().toString();
                     sendVeri();
@@ -249,9 +245,9 @@ public class LoginActivity extends AppCompatActivity {
                             firebaseFirestore.collection("USERS").document(number).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                    if(documentSnapshot.get("Name")==null)
+                                    if(!documentSnapshot.contains("name"))
                                     {
-                                        firebaseFirestore.collection("USERS").document(number).set(obj);
+                                        firebaseFirestore.collection("USERS").document(number).set(userModel);
                                         Toast.makeText(LoginActivity.this, "New User", Toast.LENGTH_SHORT).show();
                                         Log.e("Status","new");
                                     }

@@ -106,7 +106,7 @@ public class HomeFrag extends Fragment {
                 if (task.isComplete())
                 {
 
-                    coupRedeem.dismiss();
+
 
                     firebaseFirestore.collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).collection("AdsRecords").document("25-Mar-2020").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
@@ -126,7 +126,7 @@ public class HomeFrag extends Fragment {
                             else if (Integer.parseInt(last)==adsModel[0].getAds().size())
                             {
 
-                                Log.e("Last Ad","Last Ad");
+                                mTextField.setText("Everything CaughtUp for Today\nThank You");
 
 
 
@@ -144,6 +144,7 @@ public class HomeFrag extends Fragment {
                         }
 
                         private void check(Timestamp timestamp, final String last) {
+                            coupRedeem.dismiss();
 
                             if(timestamp==null)
                             {
@@ -170,7 +171,7 @@ public class HomeFrag extends Fragment {
                                     new CountDownTimer(900000-(new Date().getTime()-timestamp.toDate().getTime()), 1000) {
 
                                         public void onTick(long millisUntilFinished) {
-                                            mTextField.setText("seconds remaining: " + millisUntilFinished / 1000);
+                                            mTextField.setText("Next Video will be available in: " + millisUntilFinished / 1000+" Sec");
                                             play.setEnabled(false);
 
 
@@ -203,6 +204,9 @@ public class HomeFrag extends Fragment {
             }
 
             private void playv() {
+                mTextField.setText("Click To Play");
+                mTextField.setVisibility(View.VISIBLE);
+
                 Toast.makeText(view.getContext(), ""+val[0]+"curr==="+curr[0], Toast.LENGTH_SHORT).show();
 
 
@@ -229,14 +233,7 @@ public class HomeFrag extends Fragment {
 
 
 
-        TextView logout = view.findViewById(R.id.tvLogOut);
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(view.getContext(),MainActivity.class));
-            }
-        });
+
 
 
 

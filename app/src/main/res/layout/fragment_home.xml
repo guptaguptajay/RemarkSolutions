@@ -22,11 +22,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="555 sec"
-        android:textSize="30dp" />
+        android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/tvLogOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LogOut" />
 </LinearLayout>

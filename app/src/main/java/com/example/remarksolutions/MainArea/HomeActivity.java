@@ -1,6 +1,7 @@
 package com.example.remarksolutions.MainArea;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -30,9 +31,13 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         final TextView textView = findViewById(R.id.tvHomeCoins);
         int coins;
+        Toolbar toolbar =findViewById(R.id.myToolbar);
+        toolbar.setTitle("Home");
+        setSupportActionBar(toolbar);
+
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder().setTimestampsInSnapshotsEnabled(true).build();
-        firebaseFirestore.setFirestoreSettings(settings);
+
+
         firebaseFirestore.collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException e) {
@@ -43,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
 
                 if (snapshot != null && snapshot.exists()) {
-                    textView.setText(snapshot.get("Coins").toString());
+                    textView.setText(snapshot.get("coins").toString());
                 } else {
                     Log.d(TAG, "Current data: null");
                 }

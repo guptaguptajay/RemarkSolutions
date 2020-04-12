@@ -1,6 +1,10 @@
 package com.example.remarksolutions.Models;
 
+import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
 
 public class ShopModel {
 
@@ -8,19 +12,22 @@ public class ShopModel {
     public String name,description, shopID;
     public String src;
     public QueryDocumentSnapshot documentSnapshot;
+    public ArrayList<String> images;
 
 
+    public ShopModel(String name, String description, String shopID, String src, QueryDocumentSnapshot documentSnapshot, ArrayList<String> images) {
 
-    public ShopModel(QueryDocumentSnapshot queryDocumentSnapshot) {
-
-        documentSnapshot=queryDocumentSnapshot;
-
-        this.name = queryDocumentSnapshot.get("name").toString();
-        this.description= queryDocumentSnapshot.get("description").toString();
-        src="https://pixabay.com/get/57e5d5404c50b108f5d08460825668204022dfe05456754f76267bd4/shop-150362_1280.png?attachment";
-        shopID=queryDocumentSnapshot.getId();
-
+        this.name = name;
+        this.description = description;
+        this.shopID = shopID;
+        this.src = src;
+        this.documentSnapshot = documentSnapshot;
+        this.images = images;
     }
+
+
+
+
 
     public ShopModel() {
     }
@@ -31,6 +38,13 @@ public class ShopModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public ArrayList<String> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<String> images) {
+        this.images = images;
     }
 
     public String getDescription() {
