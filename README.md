@@ -3,7 +3,8 @@
 **This App is used by customers/ There will be a seperate app for the ShopKeepers.**
 
 # How to use:-
-1. Install the app named app-debug from "remarkSolutions\app\build\outputs\apk\debug" this location in your android smartphone.
+1. Install the app named app-debug from "remarkSolutions\app-debug.apk
+" this location in your android smartphone.
 2. Give Storage Permission.
 3. Sign-up your Account.
 
