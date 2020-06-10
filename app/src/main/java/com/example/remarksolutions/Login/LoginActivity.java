@@ -41,12 +41,17 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView resend;
     String number,id;
+    Long pho;
     FirebaseAuth mAuth;
     FirebaseFirestore firebaseFirestore;
     Spinner  locality;
     UserModel userModel;
     Locality lc= new Locality();
     String loca;
+    EditText name,phone,otp,age;
+    Button next,submit;
+
+
 
 
 
@@ -56,8 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        final EditText name,phone,otp,age;
-        final Button next,submit;
+
         mAuth=FirebaseAuth.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
 
@@ -106,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    pho=Long.parseLong(phone.getText().toString());
                     otp.setVisibility(View.VISIBLE);
                     next.setVisibility(View.GONE);
                     submit.setVisibility(View.VISIBLE);
@@ -118,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     number = "+91"+phone.getText().toString();
                     sendVeri();
+
 
 
 
@@ -188,6 +194,14 @@ public class LoginActivity extends AppCompatActivity {
         new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long l) {
+                if (pho!= Long.parseLong(phone.getText().toString()))
+                {
+                    Log.w("pho",pho.toString());
+                    otp.setVisibility(View.GONE);
+                    next.setVisibility(View.VISIBLE);
+                    submit.setVisibility(View.GONE);
+                    resend.setVisibility(View.GONE);
+                }
                 resend.setText(""+l/1000);
                 resend.setEnabled(false);
 
