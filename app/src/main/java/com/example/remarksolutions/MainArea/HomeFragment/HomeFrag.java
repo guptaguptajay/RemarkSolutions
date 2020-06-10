@@ -153,6 +153,10 @@ public class HomeFrag extends Fragment {
                                 val[0] =adsModel[0].getAds().get("1");
                                 curr[0] ="1";
                                 playv();
+                                Map<String,Object> tri = new HashMap<String, Object>();
+                                tri.put("last",0);
+                                firebaseFirestore.collection("USERS").document(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).collection("AdsRecords")
+                                        .document("25-Mar-2020").set(tri);
 
 
                             }

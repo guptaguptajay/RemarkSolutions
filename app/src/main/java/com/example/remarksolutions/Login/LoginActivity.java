@@ -39,7 +39,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginActivity extends AppCompatActivity {
 
 
-    TextView resend, shopRegister,coupRegister;
+    TextView resend;
     String number,id;
     FirebaseAuth mAuth;
     FirebaseFirestore firebaseFirestore;
@@ -63,8 +63,8 @@ public class LoginActivity extends AppCompatActivity {
 
         age=findViewById(R.id.etLoginAge);
         resend = findViewById(R.id.tvLoginResend);
-        shopRegister=findViewById(R.id.tvLoginShopRegister);
-        coupRegister=findViewById(R.id.tvLoginCouponRegister);
+//        shopRegister=findViewById(R.id.tvLoginShopRegister);
+//        coupRegister=findViewById(R.id.tvLoginCouponRegister);
         next = findViewById(R.id.btnLoginNext);
         submit= findViewById(R.id.btnLoginSubmit);
         name=findViewById(R.id.etLoginName);
@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-                     userModel= new UserModel(name.getText().toString(),loca,0,Long.parseLong(phone.getText().toString()),Integer.parseInt(age.getText().toString()));
+                     userModel= new UserModel(name.getText().toString(),loca,500,Long.parseLong(phone.getText().toString()),Integer.parseInt(age.getText().toString()));
 
                     number = "+91"+phone.getText().toString();
                     sendVeri();
@@ -163,18 +163,18 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        shopRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(view.getContext(),ShopRegisterActivity.class));
-            }
-        });
-        coupRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(view.getContext(),CouponRegisterActivity.class));
-            }
-        });
+//        shopRegister.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(view.getContext(),ShopRegisterActivity.class));
+//            }
+//        });
+//        coupRegister.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(view.getContext(),CouponRegisterActivity.class));
+//            }
+//        });
 
 
 
@@ -260,6 +260,7 @@ public class LoginActivity extends AppCompatActivity {
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
+                                    Log.e("faill",e.getMessage());
 
                                 }
                             });
@@ -277,6 +278,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         } else {
                             Toast.makeText(LoginActivity.this, "Verification Failed", Toast.LENGTH_SHORT).show();
+                            Log.e("login","failed");
 
 
                         }
